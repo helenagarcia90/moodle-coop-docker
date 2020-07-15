@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+    moodle:
+        container_name: moodle
+        build: .
+        #command: sh /docker/start.sh
+        image: httpd
+        ports:
+            - "8888:80"
+        volumes:
+            - ../moodledataunilurio:/var/moodledata
+            - ./docker/apache2/moodle.conf:/etc/apache2/sites-enabled/000-default.conf
+        networks:
+            - default
+volumes:
+    persistent:
